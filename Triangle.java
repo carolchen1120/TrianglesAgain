@@ -7,7 +7,7 @@ public class Triangle{
     v3 = c;
   }
 
-  public Triangle(double x1, double y1,double x2, double y2,double x3, double y3) {
+  public Triangle(double x1, double y1,double x2, double y2, double x3, double y3) {
     v1 = new Point(x1, y1);
     v2 = new Point(x2, y2);
     v3 = new Point(x3, y3);
@@ -37,15 +37,9 @@ public class Triangle{
     double first = v1.distanceTo(v2);
     double second = v2.distanceTo(v3);
     double third = v3.distanceTo(v1);
-    if (first == second && first == third) {
-      if (second == third) {
-        return "equilateral";
-      } else {
-        return "isosceles";
-      }
-    } else if (first == third && second == third) {
-      return "isosceles";
-    } else if (first == second && second == third) {
+    if (first == second && second == third) {
+      return "equilateral";
+    } else if (first == second || first == third || second == third) {
       return "isosceles";
     } else {
       return "scalene";
@@ -54,7 +48,7 @@ public class Triangle{
 
   // The format should be "v1(23.0, 4.0) v2(-2.3, 5.001) v3(5.0, 0.52)"
   public String toString() {
-    return ("v1(" + v1.getX() + ", " + v1.getY() + ") v2(" + v2.getX() + ", " + v2.getY() + ") v3(" + v1.getX() + ", " + v1.getY() + ")");
+    return ("v1(" + v1.getX() + ", " + v1.getY() + ") v2(" + v2.getX() + ", " + v2.getY() + ") v3(" + v3.getX() + ", " + v3.getY() + ")");
   }
 
   // - replace the specified Point (0,1, or 2) with the new Point
